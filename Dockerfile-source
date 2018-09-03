@@ -51,4 +51,4 @@ RUN			[ "/bin/bash", "/usr/local/bin/install.bash" ]
 ################################################################################
 
 # Run
-CMD			[ "/usr/sbin/mosquitto", "-c", "/etc/mosquitto/mosquitto.conf" ]
+CMD			[ "/usr/local/sbin/mosquitto", "-c", "/etc/mosquitto/mosquitto.conf" ]

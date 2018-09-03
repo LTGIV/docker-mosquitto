@@ -181,6 +181,8 @@ function installMAP {
 			/usr/bin/ \
 		;
 
+	ldconfig
+
 } # END FUNCTION : installMAP
 
 function downloadPrep {

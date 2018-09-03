@@ -1,0 +1,54 @@
+# Use for Mosquitto by source (or override with mosquittoFrom ARG)
+FROM		ubuntu:18.04
+
+LABEL		maintainer="Louis T. Getterman IV <thad.getterman@gmail.com>"
+
+# An alternative is:
+# Use Linux user namespaces to fix permissions in docker volumes - https://www.jujens.eu/posts/en/2017/Jul/02/docker-userns-remap/
+USER		root
+WORKDIR		/root
+
+################################################################################
+
+# Arguments
+
+# Mosquitto
+ARG			url_mosquitto=http://mosquitto.org/files/source/mosquitto-1.5.1.tar.gz
+
+# Mosquitto source (set to "ppa" or "source", or leave blank for auto-solving based upon Ubuntu 16 LTS or Ubuntu 18 LTS)
+ARG			mosquittoFrom
+
+# Mosquitto Authentication Plugin
+ARG			url_map=https://github.com/jpmens/mosquitto-auth-plug/archive/master.zip
+
+# MongoDB driver for C
+ARG			url_mongo=https://github.com/mongodb/mongo-c-driver/archive/1.12.0.tar.gz
+
+# libbson - deprecated, now maintained in a subdirectory of the libmongoc project
+# ARG			url_libbson=https://github.com/mongodb/libbson/archive/1.9.5.tar.gz
+
+# WebSocket library
+ARG			url_libws=https://github.com/warmcat/libwebsockets/archive/v3.0.0.tar.gz
+
+################################################################################
+
+# Environment Variables
+ENV			DEBIAN_FRONTEND noninteractive
+
+# Ports: MQTT broker insecure and secure
+EXPOSE		1883 8883
+
+# Ports: Websockets insecure and secure
+EXPOSE		9001 9002
+
+# Volumes: Mosquitto MQTT Broker
+VOLUME		[ "/var/lib/mosquitto", "/var/log/mosquitto" ]
+
+# Installer
+COPY		.includes/install.bash	/usr/local/bin/
+RUN			[ "/bin/bash", "/usr/local/bin/install.bash" ]
+
+################################################################################
+
+# Run
+CMD			[ "/usr/sbin/mosquitto", "-c", "/etc/mosquitto/mosquitto.conf" ]

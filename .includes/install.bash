@@ -311,6 +311,8 @@ setupMosquittoConfig
 
 cd;
 
-cleanup;
+cleanup
+
+ldconfig
 
 exit 0

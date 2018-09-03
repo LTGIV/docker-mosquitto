@@ -20,14 +20,30 @@ docker pull ltgiv/docker-mosquitto:ppa
 ### Build from GitHub
 It's easy to build a local image directly from GitHub:
 
-#### Compiled from source (latest and greatest)
+#### Clone repository and change to directory:
 ```
-docker build --tag ltgiv/docker-mosquitto:source https://raw.githubusercontent.com/ltgiv/docker-mosquitto/master/Dockerfile-source
+git clone https://github.com/LTGIV/docker-mosquitto.git \
+&& \
+cd ./docker-mosquitto \
+;
 ```
 
-#### Installed from [official PPA](https://launchpad.net/~mosquitto-dev/+archive/ubuntu/mosquitto-ppa) (sometimes slightly older version)
+##### Compiled from source (latest and greatest)
 ```
-docker build --tag ltgiv/docker-mosquitto:ppa https://raw.githubusercontent.com/ltgiv/docker-mosquitto/master/Dockerfile-ppa
+docker build \
+    --tag ltgiv/docker-mosquitto:source \
+    --file Dockerfile-source \
+    . \
+    ;
+```
+
+##### Installed from [official PPA](https://launchpad.net/~mosquitto-dev/+archive/ubuntu/mosquitto-ppa) (sometimes slightly older version)
+```
+docker build \
+    --tag ltgiv/docker-mosquitto:ppa \
+    --file Dockerfile-ppa \
+    . \
+    ;
 ```
 
 ## Examples

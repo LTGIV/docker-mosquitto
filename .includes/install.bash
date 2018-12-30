@@ -153,6 +153,14 @@ function installMAP {
 	cp -va Makefile Makefile.bak
 	sed -i "s/\-Werror//" Makefile
 
+	# Ensure compatibility with MAP and newer Mosquitto
+	if [ ! -f '/usr/include/mosquitto_broker.h' ]; then
+		ln --verbose --symbolic \
+				/usr/include/mosquitto.h \
+				/usr/include/mosquitto_broker.h \
+				;
+	fi
+
 	cp -va config.mk.in config.mk \
 		&& \
 		sed -i "s/^BACKEND_CDB .*/BACKEND_CDB ?= yes/" config.mk && \

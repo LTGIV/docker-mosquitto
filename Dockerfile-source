@@ -13,7 +13,7 @@ WORKDIR		/root
 # Arguments
 
 # Mosquitto
-ARG			url_mosquitto=http://mosquitto.org/files/source/mosquitto-1.5.1.tar.gz
+ARG			url_mosquitto=https://mosquitto.org/files/source/mosquitto-1.5.5.tar.gz
 
 # Mosquitto source (set to "ppa" or "source", or leave blank for auto-solving based upon Ubuntu 16 LTS or Ubuntu 18 LTS)
 ARG			mosquittoFrom
@@ -22,13 +22,13 @@ ARG			mosquittoFrom
 ARG			url_map=https://github.com/jpmens/mosquitto-auth-plug/archive/master.zip
 
 # MongoDB driver for C
-ARG			url_mongo=https://github.com/mongodb/mongo-c-driver/archive/1.12.0.tar.gz
+ARG			url_mongo=https://github.com/mongodb/mongo-c-driver/archive/1.13.0.tar.gz
 
 # libbson - deprecated, now maintained in a subdirectory of the libmongoc project
 # ARG			url_libbson=https://github.com/mongodb/libbson/archive/1.9.5.tar.gz
 
 # WebSocket library
-ARG			url_libws=https://github.com/warmcat/libwebsockets/archive/v3.0.0.tar.gz
+ARG			url_libws=https://github.com/warmcat/libwebsockets/archive/v3.1.0.tar.gz
 
 ################################################################################
 

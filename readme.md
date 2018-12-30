@@ -49,7 +49,7 @@ docker build \
 
 ## Examples
 
-Using in [Docker Compose](https://docs.docker.com/compose/), as described in [Tying MQTT, WebSockets, and Nginx together with Docker](https://thad.getterman.org/2017/09/04/tying-mqtt-websockets-and-nginx-together-with-docker):
+Using [Docker Compose](https://docs.docker.com/compose/), as described in [Tying MQTT, WebSockets, and Nginx together with Docker](https://thad.getterman.org/2017/09/04/tying-mqtt-websockets-and-nginx-together-with-docker):
 
 ```
 ---
